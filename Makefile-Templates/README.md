@@ -9,4 +9,4 @@ make all
 make program
 ```
 
-feel free to write a simple shell script to automate this for you (extra bonus points for an alias)
+feel free to write a simple shell script to automate this for you (extra bonus points if you can also do an alias)
