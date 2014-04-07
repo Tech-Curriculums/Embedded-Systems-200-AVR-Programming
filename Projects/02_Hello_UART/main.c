@@ -1,3 +1,6 @@
+//credits to http://www.appelsiini.net/2011/simple-usart-with-avr-libc
+//for tutorial on uart communication
+
 #include <avr/io.h>
 
 //this is for the uart code
@@ -69,10 +72,6 @@ int main(void) {
   //OCIE0A this bit want interrupt setup so that when compare 'A' is equal it will set up an interrupt
   TIMSK0 = (1 << OCIE0A);
 
-  // clock select bit prescaler
-
-//  sei(); // sets the i-bit
-
 //conclude setup
 
   //sets the direction of the DDRB to be an OUTPUT
@@ -80,60 +79,9 @@ int main(void) {
 
   char input;
 
-  int i;
-//    input = getchar();
-   //OCR0A  Output Compare Register A
-  //
-
-/*
-  TCCR0B =  (0 << CS02) | (1 << CS01) | (0 << CS00); //page 110 of the documentaion  this sets the prescaler to 1024
-
-  for (i = 255; i > 0 ; i--) {
-    OCR0A = i;  //number of ticks we want to go through before resetting, this is the compare, when = it does stuff + resets
-    _delay_ms(100);
-  }
-  */
-
-  /*
-  for (i = 0; i < 255 ; i++) {
-    OCR0A = i;  //number of ticks we want to go through before resetting, this is the compare, when = it does stuff + resets
-    _delay_ms(100);
-  }
-  */
-
-//----------------------------------------------------------
-//                        ROUND 2
-//
-//----------------------------------------------------------
 puts("hello world");
 _delay_ms(2200);
 puts("hello world again");
-/*
-  TCCR0B =  (1 << CS02) | (0 << CS01) | (0 << CS00); //page 110 of the documentaion  this sets the prescaler to 1024
-    OCR0A = 255;  //number of ticks we want to go through before resetting, this is the compare, when = it does stuff + resets
-    _delay_ms(5000);
-    OCR0A = 1;  //number of ticks we want to go through before resetting, this is the compare, when = it does stuff + resets
-    _delay_ms(5000);
-  TCCR0B =  (0 << CS02) | (1 << CS01) | (1 << CS00); //page 110 of the documentaion  this sets the prescaler to 1024
-    OCR0A = 255;  //number of ticks we want to go through before resetting, this is the compare, when = it does stuff + resets
-    _delay_ms(5000);
-    OCR0A = 1;  //number of ticks we want to go through before resetting, this is the compare, when = it does stuff + resets
-    _delay_ms(5000);
-  for (i = 255; i > 35; i--) {
-    OCR0A = i;  //number of ticks we want to go through before resetting, this is the compare, when = it does stuff + resets
-    _delay_ms(100);
-  }
-
-  TCCR0B =  (0 << CS02) | (0 << CS01) | (1 << CS00); //page 110 of the documentaion  this sets the prescaler to 1024
-  for (i = 255; i > 35; i--) {
-    OCR0A = i;  //number of ticks we want to go through before resetting, this is the compare, when = it does stuff + resets
-    _delay_ms(10);
-  }
-
-  // printf("You wrote %c\n", input);
-  }
-  */
-
   return 0;
 }
 
@@ -152,6 +100,5 @@ char uart_getchar(FILE *stream) {
   return UDR0;
 }
 
-ISR(TIMER0_COMPA_vect) {
-    PORTB ^=  (1 << PORTB0); //toggles an led -- this is really useful!!
-}
+//    PORTB ^=  (1 << PORTB0); //toggles an led -- this is really useful!!
+
