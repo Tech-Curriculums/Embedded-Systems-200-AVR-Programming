@@ -13,6 +13,8 @@
 # Sander Pool
 # Frederik Rouleau
 #
+# Gregory Kielian -- modded some lines to make it compatible with the Arduino Pro Mini
+#
 #----------------------------------------------------------------------------
 # On command line:
 #
